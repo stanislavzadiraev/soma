@@ -1,0 +1,27 @@
+{
+  "name": "soma",
+  "version": "0.0.1",
+  "keywords": [
+    "nginx php sql"
+  ],
+  "description": "Some Server",
+  "license": "ISC",
+  "author": "https://github.com/stanislavzadiraev",
+  "homepage": "https://github.com/stanislavzadiraev/soma#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stanislavzadiraev/soma.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stanislavzadiraev/soma/issues"
+  },
+  "devDependencies": {
+    "pusher": "github:stanislavzadiraev/pusher"
+  },
+  "scripts": {
+    "pusher": "pusher"
+  },
+  "type": "module",
+  "main": "dst/index.js",
+  "bin": "bin/index.js"
+}
