@@ -122,7 +122,7 @@ const build = ({
   ])
 
   const prune = ({
-    dbpath = 'database',a
+    dbpath = 'database',
     fspath = 'fileroot',
   }) =>
   Promise.all(
