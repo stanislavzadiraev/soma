@@ -62,6 +62,12 @@ const build = ({
       `
     ),
     writeFile(
+      'mysql.dockerfile',
+      `
+      FROM mysql:latest
+      `
+    ),
+    writeFile(
       'docker-compose.yml',
       `
       version: '3.1'
@@ -93,7 +99,9 @@ const build = ({
           ]
 
         mysql:
-          image: mysql:latest
+          build:
+            context: .
+            dockerfile: mysql.dockerfile
           restart: always
           environment:
             MYSQL_RANDOM_ROOT_PASSWORD: OK
@@ -126,7 +134,7 @@ const build = ({
     fspath = 'fileroot',
   }) =>
   Promise.all(
-    [fspath, dbpath, 'nginx.default.conf', 'php.dockerfile', 'docker-compose.yml']
+    [fspath, dbpath, 'nginx.default.conf', 'php.dockerfile', 'mysql.dockerfile', 'docker-compose.yml']
     .map(path =>
       rm(path, {force: true, recursive: true})
     )
