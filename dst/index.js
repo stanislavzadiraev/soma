@@ -122,7 +122,8 @@ const build = ({
   ])
 
   const prune = ({
-    dbpath = 'database',
+    dbpath = 'database',a
+    fspath = 'fileroot',
   }) =>
   Promise.all(
     [fspath, dbpath, 'nginx.default.conf', 'php.dockerfile', 'docker-compose.yml']
