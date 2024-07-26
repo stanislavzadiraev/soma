@@ -55,6 +55,13 @@ const build = ({
       `
     ),
     writeFile(
+      'php.dockerfile',
+      `
+      FROM php:fpm
+      RUN docker-php-ext-install mysqli
+      `
+    ),
+    writeFile(
       'docker-compose.yml',
       `
       version: '3.1'
@@ -75,7 +82,9 @@ const build = ({
           ]
 
         php:
-          image: php:fpm
+          build:
+            context: .
+            dockerfile: php.dockerfile
           restart: always
           user: "${UID}:${GID}"
           volumes: [ 
@@ -116,7 +125,7 @@ const build = ({
     dbpath = 'database',
   }) =>
   Promise.all(
-    [fspath, dbpath, 'nginx.default.conf', 'docker-compose.yml']
+    [fspath, dbpath, 'nginx.default.conf', 'php.dockerfile', 'docker-compose.yml']
     .map(path =>
       rm(path, {force: true, recursive: true})
     )
